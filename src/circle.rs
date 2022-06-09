@@ -4,24 +4,15 @@ use physic_engine::{
     matrix::static_vector::StaticColumnVector,
     soft_body::SphereObject,
     verlet_object::{VerletObject, VerletObjectBase},
+    verlet_derive::VerletObject
 };
 use web_sys::CanvasRenderingContext2d;
 // use gloo::console::log;
 
-#[derive(Clone, Debug, PartialEq, Default)]
+#[derive(Clone, Debug, PartialEq, Default, VerletObject)]
 pub struct Circle {
     radius: f64,
-    verlet_base: VerletObjectBase<2>,
-}
-
-impl VerletObject<2> for Circle {
-    fn get_verlet_infos_mut(&mut self) -> &mut VerletObjectBase<2> {
-        &mut self.verlet_base
-    }
-
-    fn get_verlet_infos(&self) -> &VerletObjectBase<2> {
-        &self.verlet_base
-    }
+    #[verlet_base] verlet_base: VerletObjectBase<2>,
 }
 
 impl SphereObject<2> for Circle {

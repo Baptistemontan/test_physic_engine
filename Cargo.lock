@@ -452,9 +452,10 @@ checksum = "d4fd5641d01c8f18a23da7b6fe29298ff4b55afcccdf78973b24cf3175fee32e"
 [[package]]
 name = "physic_engine"
 version = "0.1.0"
-source = "git+https://github.com/Baptistemontan/physic_engine#8f34638e28c0f8be24a60883c6fcec89e5416274"
+source = "git+https://github.com/Baptistemontan/physic_engine#bca03f3c11779249cc02720fbbbc14a3f70294eb"
 dependencies = [
- "matrix",
+ "verlet_derive",
+ "verlet_object",
 ]
 
 [[package]]
@@ -677,6 +678,25 @@ name = "unicode-ident"
 version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d22af068fba1eb5edcb4aea19d382b2a3deb4c8f9d475c589b6ada9e0fd493ee"
+
+[[package]]
+name = "verlet_derive"
+version = "0.1.0"
+source = "git+https://github.com/Baptistemontan/physic_engine#bca03f3c11779249cc02720fbbbc14a3f70294eb"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
+ "verlet_object",
+]
+
+[[package]]
+name = "verlet_object"
+version = "0.1.0"
+source = "git+https://github.com/Baptistemontan/physic_engine#bca03f3c11779249cc02720fbbbc14a3f70294eb"
+dependencies = [
+ "matrix",
+]
 
 [[package]]
 name = "version_check"
