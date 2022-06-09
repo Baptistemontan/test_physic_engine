@@ -15,6 +15,7 @@ const TICK_INTERVAL: u32 = 1000 / 60;
 
 const SIZE: usize = 400;
 const RADIUS: f64 = (SIZE as f64) / 2.1;
+const SUB_STEPS: u32 = 8;
 
 enum Msg {
     Tick,
@@ -52,8 +53,14 @@ impl App {
         // let now = Instant::now();
         // let dt = now - self.last_render;
         // self.last_render = now;
-        let dt = Duration::from_millis(TICK_INTERVAL as u64);
-        Circle::update_all(&mut self.circles, &self.middle, RADIUS, dt);
+
+        let mut dt = Duration::from_millis(TICK_INTERVAL as u64);
+
+        
+        dt /= SUB_STEPS;
+        for _ in 0..SUB_STEPS {
+            Circle::update_all(&mut self.circles, &self.middle, RADIUS, dt);
+        }
     }
 
     fn render(&self) {

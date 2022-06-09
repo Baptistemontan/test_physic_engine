@@ -77,14 +77,10 @@ impl Circle {
         circles: &mut Vec<Self>,
         middle: &StaticColumnVector<2>,
         radius: f64,
-        mut dt: Duration,
+        dt: Duration,
     ) {
-        let sub_steps = 8;
-        dt /= sub_steps;
-        for _ in 0..sub_steps {
-            Self::update_positions(circles, dt);
-            Self::apply_contraints(circles, middle, radius);
-            Self::collisions(circles);
-        }
+        Self::update_positions(circles, dt);
+        Self::apply_contraints(circles, middle, radius);
+        Self::collisions(circles);
     }
 }
