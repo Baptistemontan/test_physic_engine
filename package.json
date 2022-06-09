@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "predeploy": "trunk build -d build --release",
+    "deploy": "gh-pages -d build"
+  },
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
+  }
+}
