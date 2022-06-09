@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "predeploy": "trunk build -d build --release",
+    "predeploy": "trunk build -d build --release && node ./rename.js",
     "deploy": "gh-pages -d build"
   },
   "devDependencies": {
