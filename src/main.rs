@@ -1,6 +1,6 @@
-use std::f64::consts::TAU;
+use std::{f64::consts::TAU, time::Duration};
 
-use wasm_timer::Instant;
+// use wasm_timer::Instant;
 
 use gloo::timers::callback::Interval;
 use physic_engine::matrix::static_vector::StaticColumnVector;
@@ -23,7 +23,7 @@ enum Msg {
 }
 
 struct App {
-    last_render: Instant,
+    // last_render: Instant,
     middle: StaticColumnVector<2>,
     _interval: Interval,
     circles: Vec<Circle>,
@@ -49,9 +49,10 @@ fn get_context(canvas: &HtmlCanvasElement) -> Option<CanvasRenderingContext2d> {
 
 impl App {
     fn update(&mut self) {
-        let now = Instant::now();
-        let dt = now - self.last_render;
-        self.last_render = now;
+        // let now = Instant::now();
+        // let dt = now - self.last_render;
+        // self.last_render = now;
+        let dt = Duration::from_millis(TICK_INTERVAL as u64);
         Circle::update_all(&mut self.circles, &self.middle, RADIUS, dt);
     }
 
@@ -90,13 +91,13 @@ impl Component for App {
 
         let gravity = [0.0, gravity].into();
 
-        let last_render = Instant::now();
+        // let last_render = Instant::now();
 
         let mid = SIZE as f64 / 2.0;
         let middle = StaticColumnVector::from([mid, mid]);
 
         Self {
-            last_render,
+            // last_render,
             middle,
             _interval: interval,
             gravity,
